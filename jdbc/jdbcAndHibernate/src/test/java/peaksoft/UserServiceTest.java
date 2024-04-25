@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import peaksoft.model.User;
 import peaksoft.service.UserService;
-import peaksoft.service.UserServiceImpl;
+import peaksoft.service.serviceImpl.UserServiceImpl;
 
 import java.util.List;
 
