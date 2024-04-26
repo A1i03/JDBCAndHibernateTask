@@ -60,7 +60,11 @@ public class UserDaoJdbcImpl implements UserDao {
             int deleteUsers = preparedStatement.executeUpdate();
             if (deleteUsers > 0) {
                 System.out.println("Successfully deleted");
+<<<<<<< HEAD
             } else System.out.println("not found!");
+=======
+            } else System.out.println("Author id not found!");
+>>>>>>> github/master
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
