@@ -20,7 +20,7 @@ public class Main {
 ////        session.close();
 //
         UserService userServiceHibernate = new UserHibernateImpl();
-//          userServiceHibernate.saveUser("Ali", "Kaldarbekov", (byte) 21);
+          userServiceHibernate.saveUser("Ali", "Kaldarbekov", (byte) 21);
 //        System.out.println(userServiceHibernate.getAllUsers());
 //        userServiceHibernate.removeUserById(1L);
 //        userServiceHibernate.dropUsersTable();

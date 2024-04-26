@@ -16,7 +16,6 @@ public class UserDaoHibernateImpl implements UserDao {
     //EntityManagerFactory entityManagerFactory = HibernateConfig.getSession();
     EntityManagerFactory getEntityManagerFactory = HibernateConfig.getEntityManagerFactory();
 
-
     @Override
     public void createUsersTable() {
 
@@ -35,12 +34,12 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void saveUser(String name, String lastName, byte age) {
-        try (EntityManager entityManager = getEntityManagerFactory.createEntityManager()){
+        try (EntityManager entityManager = getEntityManagerFactory.createEntityManager()) {
             entityManager.getTransaction().begin();
-            User user = new User(name, lastName,age);
+            User user = new User(name, lastName, age);
             entityManager.persist(user);
             entityManager.getTransaction().commit();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
@@ -50,9 +49,7 @@ public class UserDaoHibernateImpl implements UserDao {
     public void removeUserById(long id) {
         try (EntityManager entityManager = getEntityManagerFactory.createEntityManager()) {
             entityManager.getTransaction().begin();
-            entityManager.createQuery("delete from User c where c.id = :id")
-                    .setParameter("id", id)
-                    .executeUpdate();
+            entityManager.createQuery("delete from User c where c.id = :id").setParameter("id", id).executeUpdate();
             entityManager.getTransaction().commit();
 
         } catch (HibernateException e) {
@@ -61,24 +58,24 @@ public class UserDaoHibernateImpl implements UserDao {
     }
 
 
-
     @Override
     public List<User> getAllUsers() {
-            EntityManager entityManager = getEntityManagerFactory.createEntityManager();
-            entityManager.getTransaction().begin();
-            List<User> allUsers = entityManager.createQuery("select u from User u ", User.class).getResultList();
-            entityManager.getTransaction().commit();
+        EntityManager entityManager = getEntityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        List<User> allUsers = entityManager.createQuery("select u from User u ", User.class).getResultList();
+        entityManager.getTransaction().commit();
         return allUsers;
+
     }
 
     @Override
     public void cleanUsersTable() {
-        try (EntityManager entityManager = getEntityManagerFactory.createEntityManager()){
+        try (EntityManager entityManager = getEntityManagerFactory.createEntityManager()) {
             entityManager.getTransaction().begin();
             entityManager.createQuery("delete from User ").executeUpdate();
             entityManager.getTransaction().commit();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
